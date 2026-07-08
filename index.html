@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mohamed Khaled — Flutter Developer building scalable mobile and desktop experiences with clean architecture, offline-first data, and intelligent reporting." />
+  <meta name="theme-color" content="#081225" />
+  <meta property="og:title" content="Mohamed Khaled | Flutter Developer" />
+  <meta property="og:description" content="Flutter Developer building scalable applications with Clean Architecture, BLoC/Cubit, 50+ API operations, assessment systems, release engineering, and cross-platform delivery." />
+  <title>Mohamed Khaled | Flutter Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #091326;
+      --ink-soft: #101e36;
+      --surface: #f5f8fc;
+      --paper: #ffffff;
+      --text: #17223b;
+      --muted: #61708a;
+      --line: #dce4ef;
+      --blue: #2f6df6;
+      --blue-deep: #1c4cb5;
+      --cyan: #62d7ff;
+      --mint: #70e7c8;
+      --orange: #ffad5b;
+      --shadow: 0 20px 70px rgba(19, 41, 83, .12);
+      --radius-lg: 30px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Manrope", Arial, sans-serif;
+      color: var(--text);
+      background: var(--surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .skip-link { position: fixed; left: 12px; top: -50px; z-index: 100; background: #fff; color: var(--ink); padding: 10px 14px; border-radius: 10px; }
+    .skip-link:focus { top: 12px; }
+
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px; border-radius: 999px;
+      background: rgba(112, 231, 200, .12); color: #aaf6df; font: 500 12px/1 "DM Mono", monospace;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; background: var(--mint); border-radius: 99px; box-shadow: 0 0 0 5px rgba(112,231,200,.13); }
+
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px); background: rgba(8, 18, 37, .82);
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; color: #fff; letter-spacing: -.03em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px; color: #081225; background: linear-gradient(135deg, var(--cyan), var(--mint));
+      font: 800 15px/1 "DM Mono", monospace;
+    }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: #c3cfe3; font-size: 13px; font-weight: 700; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(98,215,255,.45); color: #fff !important; }
+    .menu-toggle { display:none; border: 0; background: transparent; color:#fff; padding: 8px; }
+
+    .hero {
+      position: relative; isolation: isolate; color: white; overflow: hidden;
+      background: radial-gradient(circle at 20% 20%, rgba(47,109,246,.35), transparent 29%), radial-gradient(circle at 82% 24%, rgba(98,215,255,.20), transparent 23%), linear-gradient(135deg, #081225 0%, #0b1730 52%, #0f2141 100%);
+      padding: 84px 0 84px;
+    }
+    .hero::before, .hero::after { content:""; position:absolute; pointer-events:none; z-index:-1; }
+    .hero::before { width: 440px; height: 440px; right: -190px; bottom: -240px; border: 1px solid rgba(98,215,255,.2); border-radius: 50%; box-shadow: 0 0 0 62px rgba(98,215,255,.035), 0 0 0 125px rgba(98,215,255,.03); }
+    .hero::after { left: 0; right:0; bottom:0; height: 1px; background: linear-gradient(90deg, transparent, rgba(98,215,255,.6), transparent); }
+    .hero-grid { display:grid; grid-template-columns: 1.25fr .75fr; align-items:center; gap: 64px; }
+    h1 { font-size: clamp(42px, 6.3vw, 78px); line-height: 1.05; margin: 19px 0 20px; letter-spacing: -.065em; max-width: 840px; }
+    .hero h1 .accent { color: var(--cyan); display:block; }
+    .hero-copy { max-width: 690px; color: #bfcee7; font-size: clamp(16px, 2vw, 19px); line-height: 1.8; margin:0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap: 12px; margin-top: 31px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; min-height:48px; padding: 0 18px; border-radius: 12px; font-size:14px; font-weight:800; transition:.2s ease; }
+    .btn-primary { color:#071527; background:linear-gradient(135deg,var(--cyan),var(--mint)); box-shadow: 0 14px 30px rgba(64, 218, 215, .17); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 32px rgba(64,218,215,.27); }
+    .btn-secondary { color:#eff6ff; border: 1px solid rgba(255,255,255,.21); background:rgba(255,255,255,.05); }
+    .btn-secondary:hover { background:rgba(255,255,255,.11); }
+    .hero-note { display:flex; align-items:center; gap:12px; margin-top:25px; color:#8da1c2; font: 12px/1.5 "DM Mono", monospace; }
+    .hero-note svg { color: var(--mint); flex:0 0 auto; }
+
+    .hero-profile { position:relative; min-height: 480px; border:1px solid rgba(255,255,255,.16); border-radius: 28px; padding: 13px; overflow:hidden; box-shadow: 0 32px 100px rgba(0,0,0,.28); background: linear-gradient(145deg, rgba(98,215,255,.30), rgba(17,38,83,.96) 42%, rgba(10,19,39,.98)); }
+    .hero-profile::before { content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(circle at 11% 10%, rgba(112,231,200,.26), transparent 24%), linear-gradient(180deg, transparent 50%, rgba(5,13,30,.74)); z-index:1; }
+    .hero-profile img { display:block; width:100%; height: 452px; object-fit:cover; object-position:center top; border-radius: 19px; filter: saturate(.97) contrast(1.03); }
+    .profile-top { position:absolute; left:30px; right:30px; top:30px; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:12px; color:#e7f3ff; font: 11px "DM Mono", monospace; }
+    .profile-status { display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(6,21,46,.48); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.18); }
+    .profile-status i { width:7px; height:7px; border-radius:50%; background:var(--mint); box-shadow:0 0 0 5px rgba(112,231,200,.15); }
+    .profile-badge { position:absolute; z-index:2; left:30px; right:30px; bottom:29px; padding:16px 17px; border-radius:16px; border:1px solid rgba(255,255,255,.18); background:rgba(6,20,44,.58); backdrop-filter:blur(12px); color:#fff; }
+    .profile-badge strong { display:block; font-size:18px; line-height:1.15; letter-spacing:-.045em; }
+    .profile-badge span { display:block; color:#c3d2ea; font:11px/1.5 "DM Mono", monospace; margin-top:5px; }
+    .profile-orbit { position:absolute; z-index:2; width:92px; height:92px; border-radius:50%; right:-27px; bottom:82px; border:1px solid rgba(98,215,255,.75); box-shadow:0 0 0 14px rgba(98,215,255,.08); }
+    .profile-orbit::after { content:""; position:absolute; width:12px; height:12px; border-radius:50%; left:14px; top:11px; background:var(--cyan); box-shadow:0 0 18px var(--cyan); }
+
+    .proof { background: #fff; border-bottom:1px solid var(--line); }
+    .proof-grid { min-height: 116px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items:center; }
+    .proof-item { display:flex; align-items:center; gap:12px; padding: 10px 0; }
+    .proof-icon { width:42px; height:42px; display:grid; place-items:center; color:var(--blue); border-radius:13px; background:#edf3ff; flex: 0 0 auto; }
+    .proof-value { display:block; color:var(--ink); font-size:19px; font-weight:800; line-height:1.15; letter-spacing:-.04em; }
+    .proof-label { display:block; margin-top:4px; color:var(--muted); font-size:12px; font-weight:700; }
+
+    section { padding: 100px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom: 38px; }
+    .section-kicker { color: var(--blue); font: 700 12px/1 "DM Mono", monospace; letter-spacing:.08em; text-transform:uppercase; }
+    h2 { color:var(--ink); font-size: clamp(30px, 4vw, 47px); line-height:1.1; margin: 12px 0 0; letter-spacing:-.055em; }
+    .section-lead { max-width:430px; color:var(--muted); font-size:15px; margin:0; }
+
+    .expertise { background:linear-gradient(180deg, #f5f8fc 0%, #edf3fa 100%); }
+    .expertise-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+    .expertise-card { background:rgba(255,255,255,.9); border:1px solid #e1e8f1; border-radius:var(--radius-md); padding:25px; box-shadow:0 12px 24px rgba(23,48,92,.035); }
+    .expertise-card:hover { transform: translateY(-4px); transition:.25s; box-shadow: var(--shadow); }
+    .expertise-icon { width:44px;height:44px; display:grid;place-items:center;border-radius:13px;background:#eef4ff;color:var(--blue); }
+    .expertise-card h3 { color:var(--ink); margin:19px 0 8px; font-size:18px; letter-spacing:-.035em; }
+    .expertise-card p { color:var(--muted); font-size:14px; margin:0; }
+
+    .projects { background:#fff; }
+    .project-list { display:grid; gap:20px; }
+    .project { position:relative; display:grid; grid-template-columns: .9fr 1.1fr; gap:0; min-height: 350px; border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; background:#fff; transition:.25s ease; }
+    .project:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .project-visual { position:relative; min-height: 300px; padding: 28px; color:#fff; overflow:hidden; }
+    .project-visual.p1 { background:linear-gradient(145deg, #0a4762, #123d78 55%, #1f6b99); }
+    .project-visual.p2 { background:linear-gradient(145deg, #542181, #243570 52%, #164d79); }
+    .project-visual.p3 { background:linear-gradient(145deg, #0b685e, #135652 54%, #0f3155); }
+    .project-visual.p4 { background:linear-gradient(145deg, #773c60, #522c78 54%, #1f3c79); }
+    .project-visual.p5 { background:linear-gradient(145deg, #8a4f12, #aa6126 48%, #654018); }
+    .project-visual.p6 { background:linear-gradient(145deg, #183456, #213a6d 48%, #0b203d); }
+    .learning-board { position:absolute; right:33px; bottom:33px; z-index:2; width:220px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; transform:rotate(-5deg); }
+    .learning-board span { aspect-ratio:1; border-radius:15px; display:grid; place-items:center; font:800 22px/1 "DM Mono",monospace; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); box-shadow:0 12px 22px rgba(0,0,0,.14); }
+    .terminal-card { position:absolute;right:28px;bottom:27px;z-index:2;width:250px;padding:16px 17px;border-radius:14px;background:#071322;border:1px solid rgba(98,215,255,.28);box-shadow:0 16px 28px rgba(0,0,0,.28);font:10px/1.75 "DM Mono",monospace;color:#bde8ff; }
+    .terminal-dots{display:flex;gap:6px;margin-bottom:10px}.terminal-dots i{width:8px;height:8px;border-radius:50%;background:var(--mint)}.terminal-card .ok{color:#7bf0ce}.terminal-card .warn{color:#ffd28b}
+    .project-visual::after { content:""; position:absolute; width:330px;height:330px;border-radius:50%;right:-120px;bottom:-180px;border:1px solid rgba(255,255,255,.25); box-shadow:0 0 0 38px rgba(255,255,255,.05),0 0 0 76px rgba(255,255,255,.035); }
+    .project-micro { font: 11px "DM Mono", monospace; color:rgba(255,255,255,.72); text-transform:uppercase; letter-spacing:.08em; position:relative;z-index:1; }
+    .project-visual h3 { font-size:27px; line-height:1.1; letter-spacing:-.055em; max-width:320px; margin:18px 0 0; position:relative;z-index:1; }
+    .device { position:absolute; width:188px; height:250px; bottom:-64px; right:58px; z-index:1; border:8px solid #0a1730; border-bottom-width:0; border-radius:28px 28px 0 0; background:linear-gradient(165deg,#ecf2ff,#d5e1f5); box-shadow:0 20px 35px rgba(0,0,0,.34); overflow:hidden; }
+    .device::before { content:""; display:block; width:64px;height:13px;border-radius:0 0 10px 10px;background:#0a1730;margin:0 auto; }
+    .device-screen { padding: 17px 13px; color:#19305b; }
+    .screen-top { height:10px;width:64%;border-radius:9px;background:#2f6df6;margin:6px 0 13px; }
+    .screen-line { height:8px;border-radius:10px;background:#b9c9e5;margin:8px 0; } .screen-line.short { width:64%; } .screen-line.dark { background:#5875ba; width:81%; }
+    .screen-box { height:63px; border-radius:12px; background:linear-gradient(145deg,#fff,#dce7ff); margin:13px 0; border:1px solid #c8d8f3; }
+    .paper-stack { position:absolute; right:34px; bottom:34px; width:190px; height:126px; z-index:2; border-radius:13px; background:rgba(255,255,255,.95); box-shadow:0 17px 35px rgba(4,18,40,.26); transform:rotate(-5deg); padding:17px; color:#273a66; }
+    .paper-stack::after { content:""; position:absolute; z-index:-1; inset:10px -11px -10px 10px; border-radius:13px; background:rgba(255,255,255,.32); transform:rotate(7deg); }
+    .paper-label { color:#5b6e98; font:10px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.05em; }.paper-score { font-size:31px;font-weight:800;line-height:1;margin:9px 0 3px;letter-spacing:-.06em;}.paper-small{font-size:10px;color:#6d7e9e;}
+    .db-rings { position:absolute; right:48px; bottom:45px; z-index:2; width:150px;height:110px; } .db-rings span{position:absolute; left:0;right:0;height:31px;border:3px solid rgba(255,255,255,.9);border-radius:50%;} .db-rings span:nth-child(1){top:0;background:rgba(255,255,255,.21)}.db-rings span:nth-child(2){top:29px;border-top:0}.db-rings span:nth-child(3){top:58px;border-top:0}
+    .floating-tags { position:absolute; display:flex; gap:7px; flex-wrap:wrap; left:28px; bottom:25px; z-index:2; max-width:250px; }
+    .floating-tags span { padding:7px 9px;border-radius:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);font:10px "DM Mono",monospace;color:#fff; }
+    .project-copy { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+    .project-index { color:var(--blue); font: 700 11px "DM Mono", monospace; letter-spacing:.08em; }
+    .project-copy h3 { color:var(--ink); font-size:26px; letter-spacing:-.05em; line-height:1.15; margin: 12px 0; }
+    .project-copy p { color:var(--muted); font-size:14px; margin:0; }
+    .project-points { list-style:none; margin:19px 0 22px;padding:0; display:grid; gap:9px; }
+    .project-points li { position:relative;padding-left:21px;color:#3f4d67;font-size:13px; }
+    .project-points li::before { content:""; position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(112,231,200,.18); }
+    .stack { display:flex; flex-wrap:wrap; gap:7px; }.stack span { padding:7px 9px; border-radius:7px; background:#eff4fb; color:#40506b; font: 10px "DM Mono", monospace; }
+
+    .experience { background: var(--ink); color:#fff; }
+    .experience h2 { color:#fff; }.experience .section-kicker{ color:var(--cyan);}.experience .section-lead{color:#b5c4dc;}
+    .timeline { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .role { padding:25px; border:1px solid rgba(255,255,255,.13); border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035)); }
+    .role-top { display:flex;justify-content:space-between;gap:18px;align-items:flex-start; }.role h3{margin:0;font-size:19px;line-height:1.25;letter-spacing:-.04em;}.role-company{margin:5px 0 0;color:var(--cyan);font-size:13px;font-weight:700;}.role-date{font:11px "DM Mono",monospace;color:#aab9d2;white-space:nowrap;}.role ul{list-style:none;padding:0;margin:19px 0 0;display:grid;gap:9px;}.role li{color:#c6d2e5;font-size:13px;padding-left:17px;position:relative;}.role li::before{content:"→";position:absolute;left:0;color:var(--mint);}
+
+    .skills { background:#f8fafc; }
+    .skill-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap:20px; }
+    .skill-board, .workflow { background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px; }
+    .skill-board h3,.workflow h3 { color:var(--ink);margin:0 0 19px;font-size:20px;letter-spacing:-.045em; }
+    .skill-columns { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .skill-group { padding:16px;border-radius:14px;background:#f4f7fb; }
+    .skill-group b { display:block;color:#1f3152;font:700 11px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px; }.skill-group div{display:flex;flex-wrap:wrap;gap:7px;}.skill-group span{font-size:12px;font-weight:700;color:#4d5e79;background:#fff;padding:7px 8px;border-radius:7px;border:1px solid #e3eaf4;}
+    .workflow { background:linear-gradient(145deg,#1b4eb6,#0f2b68);color:#fff;border:0;position:relative;overflow:hidden; }.workflow::after{content:"";position:absolute;width:290px;height:290px;right:-95px;bottom:-165px;border-radius:50%;border:1px solid rgba(255,255,255,.3);box-shadow:0 0 0 35px rgba(255,255,255,.05),0 0 0 70px rgba(255,255,255,.035);}.workflow h3{color:#fff;position:relative;z-index:1;}.workflow p{color:#d5e5ff;font-size:14px;position:relative;z-index:1;}.workflow-steps{display:grid;gap:10px;margin-top:21px;position:relative;z-index:1;}.workflow-step{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;}.workflow-step b{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.16);font:12px "DM Mono",monospace;}
+
+    .contact { padding: 88px 0; background:linear-gradient(135deg,#0b1731,#102858);color:#fff; position:relative;overflow:hidden;}.contact::before{content:"";position:absolute;width:530px;height:530px;border-radius:50%;background:radial-gradient(circle,rgba(98,215,255,.18),transparent 64%);right:-170px;top:-330px;}.contact-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;}.contact h2{color:#fff;max-width:700px;}.contact p{max-width:640px;color:#bdcde6;margin:17px 0 0;font-size:16px;}.contact-links{display:grid;gap:12px;}.contact-link{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.06);padding:15px 17px;transition:.2s;}.contact-link:hover{background:rgba(255,255,255,.12);transform:translateX(3px);}.contact-link span{display:block;color:#b5c7e3;font-size:11px;font-family:"DM Mono",monospace;margin-bottom:3px;}.contact-link b{font-size:14px;}.contact-link svg{color:var(--cyan);}
+    footer { background:#071225;color:#92a5c5;}.footer-row{min-height:74px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12px;}.footer-row .brand{font-size:13px;}
+
+    @media (max-width: 900px) {
+      .hero-grid,.contact-grid,.skill-grid { grid-template-columns:1fr; }
+      .hero-profile{max-width:530px;}.timeline{grid-template-columns:1fr;}.proof-grid{grid-template-columns:1fr 1fr;padding:20px 0;}.expertise-grid{grid-template-columns:1fr 1fr;}.project{grid-template-columns:1fr;}.project-visual{min-height:270px;}.project-copy{padding:28px;}.section-head{align-items:flex-start;flex-direction:column;gap:14px;}.expertise-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width: 690px) {
+      .container{width:min(calc(100% - 28px),var(--max));}.nav{height:68px;}.nav-links{position:fixed;left:14px;right:14px;top:75px;display:none;flex-direction:column;align-items:stretch;padding:16px;border-radius:16px;background:#101e36;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow);}.nav-links.open{display:flex;}.nav-links a{padding:9px 6px;}.menu-toggle{display:block;}.nav-cta{text-align:center;}.hero{padding:60px 0 60px;}.hero-grid{gap:38px;}h1{font-size:44px;}.hero-profile{min-height:420px;padding:11px;}.hero-profile img{height:398px;}.profile-top{left:24px;right:24px;top:24px;}.profile-badge{left:24px;right:24px;bottom:23px;}.profile-orbit{bottom:76px;}.visual-card{min-height:112px;}.project-visual h3{font-size:23px;}.device{right:28px;transform:scale(.88);transform-origin:bottom right;}.paper-stack{right:20px;transform:rotate(-5deg) scale(.85);transform-origin:bottom right;}.db-rings{right:18px;transform:scale(.84);transform-origin:bottom right;}.project-copy h3{font-size:23px;}.proof-grid{grid-template-columns:1fr 1fr;gap:0;}.proof-item{padding:12px 0;}.proof-value{font-size:16px;}.proof-label{font-size:11px;}.skill-columns{grid-template-columns:1fr;}.expertise-grid{grid-template-columns:1fr;}.section-head{margin-bottom:26px;}section{padding:72px 0;}.contact{padding:70px 0;}.footer-row{flex-direction:column;justify-content:center;padding:18px 0;text-align:center;}.hero-note{align-items:flex-start;}.role-top{flex-direction:column;gap:6px;}.role-date{white-space:normal;}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Mohamed Khaled Home"><span class="brand-mark">MK</span><span>Mohamed Khaled</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="menu">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links" id="menu" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="nav-cta">Let’s work together</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><i class="dot"></i> Available for opportunities</span>
+          <h1>Building Flutter apps that are <span class="accent">reliable by design.</span></h1>
+          <p class="hero-copy">I’m Mohamed Khaled, a Flutter Developer with 2+ years of hands-on experience delivering scalable applications, complex REST API workflows, assessment systems, and interactive learning experiences across Android, iOS, and Windows Desktop.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore selected work <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="assets/Mohamed_Khaled_Flutter_CV.pdf" download>Download ATS CV <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Based in Giza, Egypt 
+          </div>
+        </div>
+        <aside class="hero-profile" aria-label="Portrait of Mohamed Khaled">
+          <img src="assets/mohamed-khaled-profile.png" alt="Mohamed Khaled, Flutter Developer" />
+          <div class="profile-top"><span class="profile-status"><i></i> Available for opportunities</span><span>EG</span></div>
+          <div class="profile-badge"><strong>Mohamed Khaled</strong><span>Flutter Developer · Mobile & Desktop Apps</span></div>
+          <span class="profile-orbit" aria-hidden="true"></span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Key highlights">
+      <div class="container proof-grid">
+        <div class="proof-item"><span class="proof-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span><span><strong class="proof-value">20+ Projects</strong><small class="proof-label">Apps & reusable modules</small></span></div>
+        <div class="proof-item"><span class="proof-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6"/></svg></span><span><strong class="proof-value">50+ API Operations</strong><small class="proof-label">Structured REST data flows</small></span></div>
+        <div class="proof-item"><span class="proof-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8M12 19v2"/></svg></span><span><strong class="proof-value">3 Platforms</strong><small class="proof-label">Android · iOS · Windows</small></span></div>
+        <div class="proof-item"><span class="proof-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></span><span><strong class="proof-value">10+ Modules</strong><small class="proof-label">Assessments & learning flows</small></span></div>
+      </div>
+    </section>
+
+    <section class="expertise">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-kicker">What I bring to a product team</span><h2>More than screens.<br/>A dependable product foundation.</h2></div>
+          <p class="section-lead">I balance polished UI with the architecture, integrations, local data, and edge-case handling that make an application reliable after launch.</p>
+        </div>
+        <div class="expertise-grid">
+          <article class="expertise-card"><div class="expertise-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></div><h3>Scalable Flutter Architecture</h3><p>Feature-first, testable app structure using Clean Architecture, dependency injection, BLoC/Cubit, and reusable components.</p></article>
+          <article class="expertise-card"><div class="expertise-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6"/></svg></div><h3>Complex Workflows & Reports</h3><p>Structured multi-step flows, assessment scoring, validation rules, dynamic calculations, and readable reporting experiences.</p></article>
+          <article class="expertise-card"><div class="expertise-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.66 3.13 3 7 3s7-1.34 7-3V5M5 12v7c0 1.66 3.13 3 7 3s7-1.34 7-3v-7"/></svg></div><h3>Offline-First & Local Data</h3><p>Reliable local persistence with SQLite and on-device files so critical data and downloaded content remain available when connectivity is limited.</p></article><article class="expertise-card"><div class="expertise-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v5M18 3v5M4 11h16M6 21h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"/><path d="m9 16 2 2 4-5"/></svg></div><h3>Release Engineering</h3><p>Reliable delivery through Android build troubleshooting, Gradle and SDK configuration, Manifest fixes, dependencies, and environment-aware releases.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">Selected projects</span><h2>Products built around<br/>real operational needs.</h2></div><p class="section-lead">A selection of applications where I contributed to architecture, business logic, reporting, local data, integrations, and production-quality UI.</p></div>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-visual p1"><span class="project-micro">Cross-platform psychological testing</span><h3>From structured assessments to reliable reports.</h3><div class="paper-stack"><span class="paper-label">Dynamic Report</span><div class="paper-score">10<span style="font-size:14px">+</span></div><span class="paper-small">Reports & scoring workflows</span></div><div class="floating-tags"><span>50+ API operations</span><span>Reports</span><span>Windows</span></div></div>
+            <div class="project-copy"><span class="project-index">01 / FEATURED</span><h3>ArabTesting Platform</h3><p>A production-oriented psychological testing platform for Android, iOS, and Windows Desktop, combining assessment administration, score-based reporting, reservations, notifications, and profile workflows.</p><ul class="project-points"><li>Built and maintained 10+ psychological assessment modules with validation, scoring engines, multi-step testing journeys, and dynamic result handling.</li><li>Integrated a broad REST API layer with 50+ request operations across authentication, dashboards, reports, reservations, notifications, and user management.</li><li>Supported mobile and Windows release delivery, including WebView flows, installer packaging, localization, pagination, and complex JSON models.</li></ul><div class="stack"><span>Flutter</span><span>Dio</span><span>BLoC / Cubit</span><span>REST APIs</span><span>Windows Desktop</span><span>Reports</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-visual p2"><span class="project-micro">Assessment tool suite</span><h3>Evidence-based workflows with clinician-ready data.</h3><div class="paper-stack"><span class="paper-label">Assessment Session</span><div class="paper-score">AI</div><span class="paper-small">Scoring, routines & monitoring</span></div><div class="floating-tags"><span>ADHD</span><span>Neuropsychology</span><span>Live data</span></div></div>
+            <div class="project-copy"><span class="project-index">02 / PRODUCT SUITE</span><h3>Psychological Assessment Tools</h3><p>A suite of neuropsychological and learning-disability assessment experiences, including ADHD routines, session-based workflows, rapid-response handling, and clinician-oriented data visibility.</p><ul class="project-points"><li>Developed dynamic UI flows, time-based routines, notifications, scoring mechanisms, and session state for assessment use cases.</li><li>Applied Clean Architecture and BLoC/Cubit to keep complex feature logic, backend data, and test flows maintainable as modules expanded.</li><li>Supported real-time events and structured backend data to improve test continuity and reporting readiness.</li></ul><div class="stack"><span>Flutter</span><span>Clean Architecture</span><span>BLoC / Cubit</span><span>Real-Time Data</span><span>Notifications</span><span>Scoring</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-visual p5"><span class="project-micro">Interactive child learning</span><h3>Playful learning flows with guided voice interaction.</h3><div class="learning-board"><span>1</span><span>◇</span><span>🎙</span><span>↔</span><span>✓</span><span>3</span></div><div class="floating-tags"><span>Speech-to-Text</span><span>Audio</span><span>Drag & Drop</span></div></div>
+            <div class="project-copy"><span class="project-index">03 / LEARNING EXPERIENCE</span><h3>Autism Learning Application</h3><p>An interactive Flutter learning application built around engaging, structured activities that support child-focused practice with visual, audio, touch, and speech-enabled interactions.</p><ul class="project-points"><li>Built 10+ interactive learning modules for categorization, colors, shapes, sequencing, counting, number ordering, and receptive-language activities.</li><li>Created voice-guided and speech-to-text answer flows, audio feedback, score tracking, and reusable lesson progression patterns.</li><li>Implemented drag-and-drop interactions, visual reinforcement, dynamic activity states, reporting, and reusable audio lifecycle handling.</li></ul><div class="stack"><span>Flutter</span><span>Speech-to-Text</span><span>Audio</span><span>Drag & Drop</span><span>Gamification</span><span>Reporting</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-visual p6"><span class="project-micro">Technical case study</span><h3>Turning fragile Android builds into dependable releases.</h3><div class="terminal-card"><div class="terminal-dots"><i></i><i></i><i></i></div><div><span class="warn">$</span> ./gradlew assembleRelease</div><div><span class="ok">✓</span> Gradle configuration resolved</div><div><span class="ok">✓</span> SDK & manifest aligned</div><div><span class="ok">✓</span> Release ready</div></div><div class="floating-tags"><span>Gradle</span><span>Android SDK</span><span>Manifest</span></div></div>
+            <div class="project-copy"><span class="project-index">04 / DELIVERY CASE STUDY</span><h3>Android Build & Release Modernization</h3><p>A focused engineering contribution across Flutter projects where legacy Android build, dependency, SDK, and manifest configuration issues needed to be resolved before reliable releases could be delivered.</p><ul class="project-points"><li>Diagnosed and resolved 10+ Android build issues involving Gradle, Android SDK, AndroidManifest, dependencies, and configuration drift.</li><li>Improved build stability by 40% through systematic troubleshooting, safer configuration, and better alignment between Flutter and Android project layers.</li><li>Supported smoother release preparation with environment-aware checks and maintainable build configurations.</li></ul><div class="stack"><span>Gradle</span><span>Android SDK</span><span>AndroidManifest</span><span>Dependencies</span><span>Release Builds</span><span>Troubleshooting</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-visual p4"><span class="project-micro">Commercial mobile application</span><h3>Polished user journeys with production API integration.</h3><div class="device"><div class="device-screen"><div class="screen-top" style="background:#8b4acc"></div><div class="screen-box" style="height:82px;background:linear-gradient(145deg,#edd6ff,#dbc8ff)"></div><div class="screen-line dark"></div><div class="screen-line short"></div></div></div><div class="floating-tags"><span>APIs</span><span>Responsive UI</span><span>Legacy fixes</span></div></div>
+            <div class="project-copy"><span class="project-index">05 / COMMERCIAL APP</span><h3>BeBeauty App · BlueZone Kuwait</h3><p>A commercial beauty-services application where I contributed to Flutter feature delivery, API integration, responsive user interfaces, and legacy code improvement.</p><ul class="project-points"><li>Shipped responsive screens and modular feature components using a clean, maintainable Flutter structure.</li><li>Integrated authentication, session flows, REST APIs, and robust JSON mapping in collaboration with backend teams.</li><li>Addressed UI, data, and Android build issues while improving code clarity and release readiness.</li></ul><div class="stack"><span>Flutter</span><span>REST APIs</span><span>JSON</span><span>Authentication</span><span>Responsive UI</span><span>Debugging</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-visual p3"><span class="project-micro">End-to-end Flutter application</span><h3>Built complete. Designed to work offline.</h3><div class="db-rings"><span></span><span></span><span></span></div><div class="floating-tags"><span>SQLite</span><span>Offline-first</span><span>Full ownership</span></div></div>
+            <div class="project-copy"><span class="project-index">06 / END-TO-END</span><h3>Dar Al-Mustafa</h3><p>A complete Flutter application built end-to-end with a local-first approach, designed for reliable everyday use without continuous connectivity.</p><ul class="project-points"><li>Owned the application from project setup through responsive UI, business logic, data handling, reusable components, and delivery.</li><li>Designed local persistence with SQLite so essential data remains available during limited or unavailable network connectivity.</li><li>Applied reusable architecture and clean code practices to support future expansion and simpler maintenance.</li></ul><div class="stack"><span>Flutter</span><span>Dart</span><span>SQLite</span><span>Responsive UI</span><span>Local Data</span><span>Clean Code</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">Experience</span><h2>Hands-on delivery in<br/>real product environments.</h2></div><p class="section-lead">Focused on Flutter development, architecture, integrations, assessment systems, release troubleshooting, and cross-platform delivery.</p></div>
+        <div class="timeline">
+          <article class="role"><div class="role-top"><div><h3>Flutter Developer</h3><p class="role-company">ArabTesting AI · Cairo, Egypt</p></div><time class="role-date">Jun 2025 — Present</time></div><ul><li>Developing and maintaining 10+ assessment modules, 10+ dynamic reports, scoring logic, notifications, and multi-step test flows.</li><li>Integrating 50+ REST API request operations for dashboards, assessments, reservations, reports, notifications, and user management.</li><li>Delivering Android, iOS, and Windows Desktop support, including WebView flows, installer packaging, and release troubleshooting.</li><li>Resolving Gradle, Android SDK, manifest, and dependency issues to improve release reliability and maintainability.</li></ul></article>
+          <article class="role"><div class="role-top"><div><h3>Flutter Developer</h3><p class="role-company">BlueZone Company · Kuwait</p></div><time class="role-date">Mar 2025 — Jun 2025</time></div><ul><li>Delivered commercial Flutter feature modules using responsive UI, modular architecture, and reusable components.</li><li>Implemented authentication, session handling, REST API integration, real-time feature support, and complex JSON mapping.</li><li>Collaborated with backend teams and refactored legacy modules to improve code readability, performance, and delivery readiness.</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">Technical toolkit</span><h2>The stack behind<br/>the delivery.</h2></div><p class="section-lead">Tools and patterns selected to keep products fast, maintainable, testable, and ready to grow.</p></div>
+        <div class="skill-grid">
+          <div class="skill-board"><h3>Core technologies</h3><div class="skill-columns"><div class="skill-group"><b>Flutter & architecture</b><div><span>Flutter</span><span>Dart</span><span>Clean Architecture</span><span>MVVM</span><span>MVC</span><span>get_it DI</span><span>Responsive UI</span><span>Animations</span></div></div><div class="skill-group"><b>State & data</b><div><span>BLoC</span><span>Cubit</span><span>Provider</span><span>SQLite</span><span>SharedPreferences</span><span>Local Files</span><span>JSON</span><span>REST APIs</span></div></div><div class="skill-group"><b>Integration</b><div><span>Dio</span><span>REST APIs</span><span>Firebase</span><span>FCM</span><span>WebView</span><span>Postman</span><span>Authentication</span><span>Multi-language</span></div></div><div class="skill-group"><b>Delivery & debugging</b><div><span>Git</span><span>GitHub</span><span>Android SDK</span><span>Gradle</span><span>AndroidManifest</span><span>Windows Installers</span><span>Build Automation</span></div></div></div></div>
+          <aside class="workflow"><h3>How I approach a feature</h3><p>I work from the user flow to the data contract — not just from a static design to a screen.</p><div class="workflow-steps"><div class="workflow-step"><b>01</b> Understand the workflow and edge cases</div><div class="workflow-step"><b>02</b> Structure features for maintainability</div><div class="workflow-step"><b>03</b> Build UI, state, data, and error handling</div><div class="workflow-step"><b>04</b> Test, debug, refine, and deliver</div></div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div><span class="section-kicker" style="color:var(--cyan)">Get in touch</span><h2>Let’s build something that works beautifully — and keeps working.</h2><p>Open to Flutter roles, freelance projects, and product teams that need reliable cross-platform delivery. Reach out through LinkedIn, WhatsApp, email, or download my CV.</p><div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/201145836183" target="_blank" rel="noopener">Message on WhatsApp <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="assets/Mohamed_Khaled_Flutter_CV.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div></div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:elgallantmohamed9@gmail.com"><div><span>EMAIL</span><b>elgallantmohamed9@gmail.com</b></div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/mohamed-elgallant-9a5553340" target="_blank" rel="noopener"><div><span>LINKEDIN</span><b>linkedin.com/in/mohamed-elgallant</b></div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="contact-link" href="tel:+201145836183"><div><span>PHONE</span><b>+20 114 583 6183</b></div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-row"><a href="#top" class="brand"><span class="brand-mark">MK</span><span>Mohamed Khaled</span></a><span>© <span id="year"></span> · Flutter Developer · Giza, Egypt</span></div></footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+    document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => {
+      menu.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
