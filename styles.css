@@ -160,7 +160,7 @@ html,body{max-width:100%;overflow-x:hidden}
   .hero{gap:18px;padding-bottom:76px}
   .hero-right{height:390px;margin-top:0;overflow:hidden}
   .portrait-wrap{width:74%;height:84%;right:0;bottom:18px}
-  .code-window{left:0;top:28px;width:58%;max-width:220px}
+  .code-window{left:0;top:28px;width:58%;max-width:220px;z-index:5}
   .float-chip{max-width:72%;padding:8px 10px}
   .float-chip-one{left:0;bottom:35px}
   .float-chip-two{right:0;bottom:5px}
