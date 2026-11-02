@@ -150,3 +150,32 @@ html{overflow-x:clip}
 @keyframes groupRise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 @keyframes mobileMenuIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.skills-grid.visible .skill-group,.main-nav.open{animation:none!important}}
+
+/* Mobile overflow and terminal alignment fixes. */
+html,body{max-width:100%;overflow-x:hidden}
+.hero,.hero-left,.hero-right,.about-grid,.about-terminal{min-width:0;max-width:100%}
+
+@media(max-width:560px){
+  .container,.nav-container{width:calc(100% - 32px)}
+  .hero{gap:18px;padding-bottom:76px}
+  .hero-right{height:390px;margin-top:0;overflow:hidden}
+  .portrait-wrap{width:74%;height:84%;right:0;bottom:18px}
+  .code-window{left:0;top:28px;width:58%;max-width:220px}
+  .float-chip{max-width:72%;padding:8px 10px}
+  .float-chip-one{left:0;bottom:35px}
+  .float-chip-two{right:0;bottom:5px}
+  .hero-scroll{bottom:22px}
+  .about-terminal{width:100%}
+  .terminal-head{gap:10px;font-size:10px}
+  .terminal-lines{padding:18px 16px;font-size:11px}
+  .terminal-lines p{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start}
+  .terminal-output{display:block!important;padding-left:29px;overflow-wrap:anywhere}
+  .terminal-identity{min-width:0}
+  .terminal-identity small{line-height:1.55;overflow-wrap:anywhere}
+}
+
+@media(max-width:360px){
+  .hero-right{height:350px}
+  .portrait-wrap{width:76%;height:82%;bottom:20px}
+  .code-window{width:56%;top:26px}
+}
